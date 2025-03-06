@@ -63,6 +63,9 @@ public class IndexModel : PageModel
 
     private double CountSimilarity(string text)
     {
+        if (string.IsNullOrEmpty(text))
+            return 0.0;
+        
         var server = _redisDb.Multiplexer.GetServer("localhost", 6379);
         var keys = server.Keys(database: _redisDb.Database, pattern: "TEXT-*");
 
