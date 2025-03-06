@@ -57,8 +57,9 @@ public class IndexModel : PageModel
             if (!IsAlphabetic(c))
                 nonAlphabeticCount++;
         }
-
-        return (double)nonAlphabeticCount / totalChars;
+        
+        double rank = nonAlphabeticCount / totalChars;
+        return rank;
     }
 
     private double CountSimilarity(string text)
