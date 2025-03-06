@@ -8,10 +8,9 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     private readonly IDatabase _redisDb;
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(ILogger<IndexModel> logger, IConnectionMultiplexer redis)
     {
         _logger = logger;
-        var redis = ConnectionMultiplexer.Connect("localhost:6379");
         _redisDb = redis.GetDatabase();
     }
 
